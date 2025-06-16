@@ -1,8 +1,9 @@
 services:
   - type: web
-    name: crypto-signals
+    name: crypto-signals-streamlit
     env: python
-    plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run main.py --server.port=10000 --server.address=0.0.0.0
-    pythonVersion: 3.12.3
+    startCommand: streamlit run main.py --server.port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
